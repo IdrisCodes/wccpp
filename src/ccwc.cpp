@@ -12,20 +12,12 @@
 
 namespace po = boost::program_options;
 
+static constexpr size_t BUFFER_SIZE{16*1024};
 
-
-
-#include <cassert>
-#include <iterator>
-#include <string>
-
-
-constexpr size_t BUFFER_SIZE{16*1024};
-
-constexpr unsigned CountLinesIndex{0U};
-constexpr unsigned CountWordsIndex{1U};
-constexpr unsigned CountCharsIndex{2U};
-constexpr unsigned CountBytesIndex{3U};
+static constexpr unsigned CountLinesIndex{0U};
+static constexpr unsigned CountWordsIndex{1U};
+static constexpr unsigned CountCharsIndex{2U};
+static constexpr unsigned CountBytesIndex{3U};
 
 
 static void formResponseString(const wctool& wc,
@@ -57,7 +49,7 @@ int main(int argc, char *argv[])
     {
         globalLocaleString = "en_US.utf8";
     }
-    
+
     processProgramInput(argc, argv, options, filelist);
 
     if(filelist.size()== 0)
@@ -97,7 +89,6 @@ int main(int argc, char *argv[])
     return retvalue;
 }
 
-
 static void readFromStandardInput(std::bitset<4> options, bool printDash)
 {
     std::string result;
@@ -110,7 +101,6 @@ static void readFromStandardInput(std::bitset<4> options, bool printDash)
     {
         std::cin.read(buff, sizeof(buff));
         auto readCount{std::cin.gcount()};
-        std::string_view s(buff, readCount);
         wc << std::string_view(buff, readCount);
     }
 
@@ -144,7 +134,7 @@ static void formResponseString(const wctool& wc, std::bitset<4> options, std::st
     result += '\n';
 }
 
-static void processProgramInput(int argc, char **argv, std::bitset<4>& options, 
+static void processProgramInput(int argc, char **argv, std::bitset<4>& options,
                                 std::vector<std::filesystem::path>& files)
 {
 

@@ -59,7 +59,7 @@ public:
         {
             if(_lineCount == 0)
                 ++_lineCount;
-            
+
             for(auto ch : str)
             {
                 if(ch == '\n')
@@ -70,7 +70,7 @@ public:
         processWordCount(str);
         wchar_t dest[16*1024];
         auto src = str.data();
-	
+
         _charCount += str.length();
         _byteCount += str.size();
         return *this;
@@ -78,13 +78,13 @@ public:
 
     wctool& operator<< (const std::string_view& str)
     {
-        
+
 
         if(str.length() != 0)
         {
             if(_lineCount == 0)
                 ++_lineCount;
-            
+
             for(auto ch : str)
             {
                 if(ch == '\n')
@@ -96,12 +96,12 @@ public:
         wchar_t dest[16*1024];
         auto src = str.data();
 
-        
+
         _charCount += mbstowcs(nullptr,
                        str.data(),
                        str.size());
-                       
-	
+
+
         //_charCount += str.length();
         _byteCount += str.size();
         return *this;
@@ -111,7 +111,7 @@ public:
     {
         std::wstring str;
 
-    
+
         if(std::filesystem::exists(path))
         {
             if(std::filesystem::is_directory(path))
@@ -121,7 +121,7 @@ public:
 
 
             std::wifstream inputStream(path.string(), std::ios_base::in);
-            
+
 
             if(! inputStream.is_open())
             {
@@ -143,7 +143,7 @@ public:
         {
             throw std::filesystem::filesystem_error("File does not exist " + path.string(), std::error_code());
         }
-        
+
         return *this;
     }
     [[nodiscard]] constexpr size_t getLineCount() const

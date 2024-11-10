@@ -13,7 +13,7 @@ FetchContent_MakeAvailable(googletest)
 
 #Download 'The art of war' file for testing
 
-file(DOWNLOAD 
+file(DOWNLOAD
     "https://www.gutenberg.org/cache/epub/132/pg132.txt"
     "${CMAKE_CURRENT_LIST_DIR}/test.txt")
 

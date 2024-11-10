@@ -12,7 +12,7 @@ TEST(CountCharsTests, MultibyteChar)
     wctool wc;
 
     wc << str;
-    
+
     EXPECT_THAT(wc.getCharCount(), 1U);
     EXPECT_THAT(wc.getByteCount(), 3U);
 }

@@ -31,3 +31,7 @@ cmake --install ./build --prefix ~/ --config Release
 This will copy the executable to ~/bin
 
 Make sure to add this path to your PATH environment variable.
+
+### Usage
+Just like Unix's wc, mostly.
+Use wccpp --help for a list of available flags.
