@@ -24,6 +24,6 @@ endif()
 
 
 add_executable(wccpp ccwc.cpp)
-target_link_libraries(wccpp PRIVATE wctool boost_program_options)
+target_link_libraries(wccpp PRIVATE wctool boost_program_options boost_algorithm)
 
 install(TARGETS wccpp CONFIGURATIONS Release)
